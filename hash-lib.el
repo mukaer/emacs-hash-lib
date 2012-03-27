@@ -8,6 +8,8 @@
 ;;; Code:
 
 
+(eval-when-compile (require 'cl))
+
 (defun list-to-hash (arg)
 
   (let(( reshash  (make-hash-table :test 'equal))
