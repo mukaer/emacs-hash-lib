@@ -7,7 +7,7 @@
 
 ;;; Code:
 
-(eval-when-compile (require 'cl))
+(require 'cl-lib)
 
 (defun list-to-hash (arg)
   (let (
@@ -34,7 +34,7 @@
         (hash hash))
 
     (with-temp-buffer
-      (loop for key being the hash-keys of hash using (hash-values val)
+      (cl-loop for key being the hash-keys of hash using (hash-values val)
             do
             (insert
              (make-string (* 8 cnt) ? )
@@ -52,7 +52,7 @@
   (let (
         (res_hash (copy-hash-table hash )))
     (dolist (var_hash rhash)
-      (loop for key being the hash-keys of var_hash using (hash-values val)
+      (cl-loop for key being the hash-keys of var_hash using (hash-values val)
             do (puthash key val res_hash)))
     res_hash))
 
