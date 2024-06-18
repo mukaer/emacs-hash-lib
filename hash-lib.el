@@ -17,7 +17,7 @@
       (let (
             (key (nth (* i 2)  arg))
             (val (nth (+ 1 (* i 2)) arg)))
-        (if (typep val 'list)
+        (if (listp val)
             ;; true
             (let (
                   (reshash_sub (list-to-hash (car(cdr val)))))
@@ -39,7 +39,7 @@
             (insert
              (make-string (* 8 cnt) ? )
              (format "%s => " key )
-             (if  (typep val 'hash-table)
+             (if  (hash-table-p val )
                  ;; true
                  (concat  "\n" (dump-hash val  cnt ) " \n")
                ;; false
@@ -70,7 +70,7 @@
               (get-hash reshash second)
             nil))
       ;; second false
-      (if (typep first 'list)
+      (if (listp first)
           ;; type first true
           (let (
                 (first (car first))
